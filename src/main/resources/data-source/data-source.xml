@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dsBCM" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+        <constructor-arg name="url" value="jdbc:h2:mem:BCM;INIT=RUNSCRIPT from 'classpath:setup.sql'"/>
+        <constructor-arg name="username" value="sa"/>
+        <constructor-arg name="password" value="sa12345"/>
+        <constructor-arg name="suppressClose" value="true"/>
+        <property name="driverClassName" value="org.h2.Driver"/>
+    </bean>
+
+</beans>

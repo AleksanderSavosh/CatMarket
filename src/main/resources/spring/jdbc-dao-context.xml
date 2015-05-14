@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="jdbcTemplateIPS" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg name="dataSource" ref="dsBCM"/>
+    </bean>
+
+    <bean id="accountDao" class="savosh.catmarket.dao.jdbc.AccountDaoImpl">
+        <constructor-arg name="jdbcOperations" ref="jdbcTemplateIPS"/>
+    </bean>
+
+    <bean id="productDao" class="savosh.catmarket.dao.jdbc.ProductDaoImpl">
+        <constructor-arg name="jdbcOperations" ref="jdbcTemplateIPS"/>
+    </bean>
+
+    <bean id="orderDao" class="savosh.catmarket.dao.jdbc.OrderDaoImpl">
+        <constructor-arg name="jdbcOperations" ref="jdbcTemplateIPS"/>
+    </bean>
+
+</beans>
+

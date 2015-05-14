@@ -1,0 +1,13 @@
+
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.background {
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

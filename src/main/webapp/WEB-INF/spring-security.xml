@@ -1,0 +1,33 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <!--<beans:import resource="classpath:/data-source/jndi-data-source.xml"/>-->
+    <beans:import resource="classpath:/data-source/data-source.xml"/>
+    <beans:import resource="classpath:/spring/dao-context.xml"/>
+
+    <http auto-config="true">
+        <intercept-url pattern="/xxx/catalog" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/xxx/accept_order" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/service/xxx/*" access="ROLE_ADMIN"/>
+        <form-login
+                login-page="/xxx/login"
+                login-processing-url="/xxx/j_spring_security_check"
+                authentication-failure-url="/xxx/login?error=true"
+                default-target-url="/xxx/catalog"/>
+        <logout logout-url="/xxx/j_spring_security_logout"/>
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="dsBCM"
+                               users-by-username-query="SELECT LOGIN, PASSWORD, TRUE FROM ACCOUNT WHERE LOGIN = ?"
+                               authorities-by-username-query="SELECT ?, 'ROLE_ADMIN'"/>
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

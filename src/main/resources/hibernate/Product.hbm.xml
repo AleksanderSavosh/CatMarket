@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="savosh.catmarket.model">
+    <class name="Product" table="PRODUCT">
+        <id name="bread" column="BREAD"/>
+        <property name="price" column="PRICE"/>
+        <property name="hairType" column="HAIR_TYPE"/>
+        <property name="lifeTime" column="LIFE_TIME"/>
+        <property name="maxWeight" column="MAX_WEIGHT"/>
+        <property name="imgName" column="IMG_NAME"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="savosh.catmarket.model">
+    <class name="Order" table="ORDERS">
+        <id name="id" column="ID">
+            <generator class="identity"/>
+        </id>
+        <property name="fio" column="FIO"/>
+        <property name="phone" column="PHONE"/>
+        <property name="email" column="EMAIL"/>
+        <property name="deliveryAddress" column="DELIVERY_ADDRESS"/>
+        <property name="paymentDescription" column="PAYMENT_DESCRIPTION"/>
+        <property name="totalPrice" column="TOTAL_PRICE"/>
+        <property name="status" column="STATUS"/>
+
+        <set name="orderProducts" table="ORDER_PRODUCT" lazy="false">
+            <key column="ORDER_ID"/>
+            <composite-element class="OrderProduct">
+                <property name="count" column="COUNTS"/>
+                <many-to-one name="product" class="Product" column="BREAD"/>
+            </composite-element>
+        </set>
+
+    </class>
+</hibernate-mapping>
